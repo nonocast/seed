@@ -27,6 +27,13 @@ repositories {
 	mavenCentral()
 }
 
+bootRun {
+    // If System.console() return non null instance,
+    // we force ANSI color support with 'always',
+    // otherwise use default 'detect'.
+    jvmArgs = ['-Dspring.output.ansi.enabled=' + (System.console() ? 'always' : 'detect')]
+}
+
 
 dependencies {
     compile 'org.springframework.boot:spring-boot-starter-web'
